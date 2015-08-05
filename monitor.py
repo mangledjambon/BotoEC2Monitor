@@ -1,24 +1,37 @@
 __author__ = 'sean'
 
 # TODO print out all instances and details (AMI ID, instance type, region, time of launch)
+# TODO fix bucket permissions!!
 
 import boto.ec2
 
-ec2 = boto.ec2.connect_to_region('us-west-2')           # connect to region where instance is located
+ec2 = boto.connect_ec2()           # connect to region where instance is located
+regions = ec2.get_all_regions()
 
-reservations = ec2.get_all_reservations()               # get list of all reservations
-assert isinstance(reservations[0].instances, object)    # assert that reservation contains ec2 instances
-instances = reservations[0].instances                   # get list of ec2 instances
-instance = instances[0]                                 # get the first ec2 instance
+for r in regions:
+    connection = boto.connect_ec2(region=r)
+    print r.name
+    reservations = connection.get_all_instances()               # get list of all reservations
+    instances = [index for reservation in reservations for index in reservation.instances]
 
-
-print "\nInstance id: "
-print "Hostname: "
-print "Instance type: \t\t" + instance.instance_type
-print "Location: \t\t\t" + instance.placement
-print "Time of launch: "
+    if instances.__len__() < 1:
+        print "No instances in this region"
+        print "==================================="
+    else:
+        for instance in instances:
+            print "ID: \t\t\t" + instance.id
+            print "Instance Type:\t\t" + instance.instance_type
+            print "Launch Time: \t\t" + instance.launch_time
+            print "==================================="
 
 s3 = boto.connect_s3()
+
+buckets = s3.get_all_buckets()
+
+for bucket in buckets:
+    print bucket.name
+
+
 
 
 
