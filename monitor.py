@@ -12,11 +12,13 @@ instances = reservations[0].instances                   # get list of ec2 instan
 instance = instances[0]                                 # get the first ec2 instance
 
 
-print "Instance id: "
+print "\nInstance id: "
 print "Hostname: "
-print "Instance type: " + instance.instance_type
-print "Location: " + instance.placement
+print "Instance type: \t\t" + instance.instance_type
+print "Location: \t\t\t" + instance.placement
 print "Time of launch: "
+
+s3 = boto.connect_s3()
 
 
 
