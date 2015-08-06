@@ -23,7 +23,7 @@ for r in regions:                                   # loop through all regions i
             print "Launch Time: \t\t" + instance.launch_time
             print "==================================="
 
-print "Connecting to Amazon S3...\n"
+print "\nConnecting to Amazon S3...\n"
 s3 = boto.connect_s3()                              # connect to S3 storage system
 
 print "Retreiving bucket information...\n"
