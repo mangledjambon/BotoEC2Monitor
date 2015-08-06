@@ -1,8 +1,5 @@
 __author__ = 'sean'
 
-# TODO print out all instances and details (AMI ID, instance type, region, time of launch)
-# TODO fix bucket permissions!!
-
 import boto.ec2
 
 ec2 = boto.connect_ec2()                            # connect to EC2, returns connection object
