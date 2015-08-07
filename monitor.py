@@ -64,6 +64,8 @@ line 32:    Get list of all buckets. Returns a ResultSet object containing all b
 
 line 35:    Loop through all buckets.
 
+line 37:    Print bucket name.
+
 """
 
 
