@@ -37,6 +37,7 @@ for bucket in buckets:
     print bucket.name
 
 """
+
 line 8:     Connect to ec2 service using the boto method, which returns an EC2Connection object.
             My identity is verified with credentials that are stored in a config file in my
             /home directory called ~/.boto.
